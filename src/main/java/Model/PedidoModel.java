@@ -13,25 +13,24 @@ import java.sql.Date;
  */
 public class PedidoModel implements Serializable {
 
-    private Integer producto_id;
     private Integer id;
-    private boolean recogido;
+    private Integer producto_id;
     private String nombre_pedido;
     private Date fecha;
+    private boolean recogido;
 
     public PedidoModel() {
 
     }
 
-    public PedidoModel(Integer producto_id, Integer id, boolean recogido, String nombre_pedido, Date fecha) {
-        this.producto_id = producto_id;
+    public PedidoModel(Integer id, Integer producto_id, String nombre_pedido, Date fecha, boolean recogido) {
         this.id = id;
-        this.recogido = recogido;
+        this.producto_id = producto_id;
         this.nombre_pedido = nombre_pedido;
+        this.recogido = recogido;
         this.fecha = fecha;
 
     }
-    
 
     public Integer getProducto_id() {
         return producto_id;
@@ -73,9 +72,6 @@ public class PedidoModel implements Serializable {
         this.fecha = fecha;
     }
 
-    @Override
-    public String toString() {
-        return "Pedido{" + "producto_id=" + producto_id + ", id=" + id + ", recogido=" + recogido + ", nombre_pedido=" + nombre_pedido + ", fecha=" + fecha + '}';
-    }
+   
 
 }

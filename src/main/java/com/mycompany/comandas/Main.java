@@ -4,6 +4,7 @@
  */
 package com.mycompany.comandas;
 
+import Model.PedidoModel;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,9 +19,11 @@ public class Main {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        var prueba = new comanda();
         boolean salir = false;
         int num;
+
+        comanda co = new comanda();
+        PedidoModel pedido = new PedidoModel();
 
         while (!salir) {
             System.out.println("1. Crear pedido.");
@@ -36,12 +39,22 @@ public class Main {
             try {
                 switch (num) {
                     case 1:
+                        System.out.println("Introduce los datos del pedido: ");
+                        
                         break;
+
                     case 2:
+                        System.out.println("Selecciona el pedido a borrar: ");
+                        pedido.setId(sc.nextInt());
+                        co.borrar(pedido.getId());
+                        System.out.println("Pedido con id: "+ pedido.getId()+" borrado");
                         break;
-                    case 3:
+                    case 3: 
+                        System.out.println("Pedido actualizado.");
                         break;
                     case 4:
+                        System.out.println("Las comandas pendientes son: ");
+                       
                         break;
                     case 5:
                         break;
