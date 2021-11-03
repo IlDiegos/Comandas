@@ -22,7 +22,7 @@ public class Main {
         boolean salir = false;
         int num;
 
-        comanda co = new comanda();
+        Comanda co = new Comanda();
         PedidoModel pedido = new PedidoModel();
 
         while (!salir) {
@@ -40,23 +40,28 @@ public class Main {
                 switch (num) {
                     case 1:
                         System.out.println("Introduce los datos del pedido: ");
-                        
+
                         break;
 
                     case 2:
                         System.out.println("Selecciona el pedido a borrar: ");
                         pedido.setId(sc.nextInt());
                         co.borrar(pedido.getId());
-                        System.out.println("Pedido con id: "+ pedido.getId()+" borrado");
+                        System.out.println("Pedido con id: " + pedido.getId() + " borrado");
                         break;
-                    case 3: 
+                    case 3:
+                        System.out.println("Selecciona el pedido que quieres marcar: ");
+                        pedido.setId(sc.nextInt());
+                        
                         System.out.println("Pedido actualizado.");
                         break;
                     case 4:
                         System.out.println("Las comandas pendientes son: ");
-                       
+
                         break;
                     case 5:
+                        System.out.println("Carta:");
+                        co.listar().forEach(e -> System.out.println(e));
                         break;
                     case 6:
                         salir = true;
