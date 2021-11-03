@@ -22,11 +22,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean salir = false;
         int num;
-       
+
         Comanda co = new Comanda();
         PedidoModel pedido = new PedidoModel();
-        
-        
+
         while (!salir) {
             System.out.println("1. Crear pedido.");
             System.out.println("2. Eliminar pedido.");
@@ -44,22 +43,20 @@ public class Main {
                         System.out.println("Carta de productos: ");
                         co.listarCarta().forEach(e -> System.out.println(e));
                         System.out.println("\n");
-                       
-                        
+
                         System.out.println("Introduce un nombre para el pedido: ");
                         String nombre = sc.next();
-                        
+
                         System.out.println("Introduce un id de producto: ");
                         int i = sc.nextInt();
                         Integer n = co.crear(i, nombre);
-                       
-                        if(n > 0){
+
+                        if (n > 0) {
                             System.out.println("Su pedido se ha realizado con éxito.");
-                        }else{
+                        } else {
                             System.out.println("Pedido no realizado.");
                         }
-                        
-                        
+
                         break;
 
                     case 2:
@@ -71,7 +68,7 @@ public class Main {
                     case 3:
                         System.out.println("Selecciona el pedido que quieres marcar: ");
                         pedido.setId(sc.nextInt());
-                        
+
                         System.out.println("Pedido actualizado.");
                         break;
                     case 4:
