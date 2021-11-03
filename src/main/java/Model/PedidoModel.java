@@ -72,6 +72,9 @@ public class PedidoModel implements Serializable {
         this.fecha = fecha;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Pedido {" + "id=" + id + ", producto_id=" + producto_id + ", nombre_pedido=" + nombre_pedido + ", fecha=" + fecha + ", recogido=" + recogido + '}';
+    }
 
 }
