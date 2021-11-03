@@ -66,13 +66,16 @@ public class Main {
                         System.out.println("Pedido con id: " + pedido.getId() + " borrado");
                         break;
                     case 3:
+
                         System.out.println("Selecciona el pedido que quieres marcar: ");
+                        co.listarPendientes().forEach(e -> System.out.println(e));
                         pedido.setId(sc.nextInt());
+                        co.marcar(pedido.getId());
 
                         System.out.println("Pedido actualizado.");
                         break;
                     case 4:
-                        System.out.println("Las comandas pendientes son: ");
+                        System.out.println("Las comandas pendientes son: " + "\n");
                         co.listarPendientes().forEach(e -> System.out.println(e));
                         break;
                     case 5:

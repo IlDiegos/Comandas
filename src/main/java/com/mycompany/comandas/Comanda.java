@@ -44,13 +44,25 @@ public class Comanda {
     //Queries
     static final String CREAR_PEDIDO = "INSERT INTO pedidos(producto_id, nombre_pedido, fecha, recogido) values (?, ?, ?, ?)";
     static final String BORRAR = "DELETE FROM pedidos where id=?";
-    static final String RECOGIDO = "UPDATE FROM pedidos set recogido=1 where recogido = 0";
+    static final String RECOGIDO = "UPDATE pedidos set recogido=1 where id=?";
     static final String COMANDA_HOY = "SELECT * FROM pedidos where fecha = CURDATE() and recogido = 0";
     static final String LISTAR = "SELECT * FROM carta";
 
     java.util.Date utilDate = new java.util.Date();
     long lnMilisegundos = utilDate.getTime();
     java.sql.Date sqlDate = new java.sql.Date(lnMilisegundos);
+
+    public boolean marcar(int i) {
+
+        try ( PreparedStatement ps = con.prepareStatement(RECOGIDO)) {
+            ps.setInt(1, i);
+            return ps.executeUpdate() == 1;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Comanda.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public ArrayList<CartaModel> listarCarta() {
 
@@ -87,6 +99,7 @@ public class Comanda {
             while (rs.next()) {
                 PedidoModel p = new PedidoModel();
                 p.setId(rs.getInt("id"));
+                p.setProducto_id(rs.getInt("producto_id"));
                 p.setNombre_pedido(rs.getString("nombre_pedido"));
                 p.setFecha(rs.getDate("fecha"));
                 p.setRecogido(rs.getBoolean("recogido"));
